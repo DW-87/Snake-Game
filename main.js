@@ -63,9 +63,32 @@ function drawSnakePart(snakePart) {
     ctx.strokestyle = Snake_Border_Colour;  
     ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
     ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
-  
   }
-  
+
+  function changeDirection(event) {
+      const LEFT_KEY = 37;
+      const RIGHT_KEY = 39;
+      const UP_KEY = 38;
+      const DOWN_KEY = 40;
+      const keyPressed = event,keyCode;
+      const goingUp = dy === -10;
+      const goingDown = dy === -0;
+      const goingRight = dx === 10;
+      const goingLeft = dx === -10;
+      if (keyPressed === LEFT_KEY && !goingRight) {
+          dx = -10;
+          dy = -10;
+      }
+      if (keyPressed === RIGHT_KEY && !goingLeft) {
+        dx = 10;
+        dy = 0;
+    }
+    if (keyPressed === DOWN_KEY && !goingDown) {
+        dx = 0;
+        dy = 10;
+    }
+  }
+
   function drawSnake() {
     snake.forEach(drawSnakePart);
   }
